@@ -4,7 +4,7 @@ SELECT
  wl.wishes->>'first_choice' AS primary_wish,       -- JSON operator ->> to extract value from JSON object to STRING
  wl.wishes ->>'second_choice' AS backup_wish,
  wl.wishes->'colors'->>0 AS favorite_color,        -- JSON operator -> to extract value from JSON object to JSON
- json_array_length(wl.wishes->'colors') AS color_count,
+ json_array_length(wl.wishes->'colors') AS color_count, -- JSON function json_array_length to get length of JSON array
  CASE 
   WHEN tc.difficulty_to_make >= 3 THEN 'Complex Gift'
   WHEN tc.difficulty_to_make = 2 THEN 'Moderate Gift'
